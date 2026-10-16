@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beneath Europa</title>
+<meta name="description" content="Halcyon, a concept mission to melt through Europa's ice shell and reach the ocean underneath. A scroll-driven WebGL story.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-mark">HALCYON</span>
+    <span class="loader-line"><i></i></span>
+    <span class="loader-text">Acquiring signal from the Jovian system</span>
+  </div>
+</div>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+<div class="scrim" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="#top" data-goto="top" aria-label="Halcyon, back to the start">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 19c6-3 20-3 26 0" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="2.2" fill="currentColor"/></svg>
+    <span>HALCYON</span>
+  </a>
+  <div class="met"><span class="k">MET</span> <span id="met">00:00:00</span></div>
+</header>
+
+<nav class="rail" aria-label="Mission phases">
+  <ol>
+    <li><button type="button" data-goto="top" data-i="0"><span>Approach</span></button></li>
+    <li><button type="button" data-goto="europa" data-i="1"><span>Europa</span></button></li>
+    <li><button type="button" data-goto="jupiter" data-i="2"><span>Orbit</span></button></li>
+    <li><button type="button" data-goto="landing" data-i="3"><span>Landing</span></button></li>
+    <li><button type="button" data-goto="ice" data-i="4"><span>Ice shell</span></button></li>
+    <li><button type="button" data-goto="ocean" data-i="6"><span>Ocean</span></button></li>
+  </ol>
+</nav>
+
+<main id="story">
+  <section class="chapter hero" id="top">
+    <div class="panel">
+      <p class="eyebrow">Concept mission · Jovian system</p>
+      <h1><span class="line"><span>Beneath</span></span><span class="line"><span>the ice</span></span></h1>
+      <p class="lede">Halcyon is a concept lander and melt probe for Europa, Jupiter's ice-covered moon. Its job is to cut through about 20&nbsp;km of ice and reach the ocean underneath.</p>
+      <button type="button" class="cue" data-goto="europa">
+        <span>Scroll to begin the descent</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="chapter" id="europa">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>01</b> Target</p>
+      <h2>A moon with more water than Earth</h2>
+      <p>Europa is a little smaller than our Moon. Under its frozen crust, scientists think there is a global salty ocean holding about twice the water of all of Earth's oceans combined.</p>
+      <dl class="facts">
+        <div><dt>Diameter</dt><dd>3,122<small>km</small></dd></div>
+        <div><dt>Surface</dt><dd>−160<small>°C</small></dd></div>
+        <div><dt>Ice shell</dt><dd>15–25<small>km est.</small></dd></div>
+        <div><dt>Ocean depth</dt><dd>60–150<small>km est.</small></dd></div>
+        <div><dt>Orbit</dt><dd>3.55<small>days</small></dd></div>
+        <div><dt>From Jupiter</dt><dd>671,000<small>km</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="chapter" id="jupiter">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>02</b> Orbit</p>
+      <h2>Squeezed by Jupiter</h2>
+      <p>Europa's orbit is slightly oval, so every 3.55 days it swings close to Jupiter and back out. The changing pull flexes the moon, heats its interior and keeps the ocean liquid.</p>
+      <p>The rust-coloured streaks across the surface are called lineae. They are cracks where that flexing has split the ice, and some may carry material up from below.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="landing">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>03</b> Landing</p>
+      <h2>Touchdown on chaos terrain</h2>
+      <p>Halcyon sets down beside a patch of broken, jumbled ice where ocean water may have reached the surface recently. The lander stays on top as a radio relay. The cryobot drops through a hatch in its belly and starts to melt.</p>
+    </div>
+  </section>
+
+  <section class="chapter tall" id="ice">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>04</b> Ice shell</p>
+      <h2>Twenty kilometres of ice, one heated nose</h2>
+      <p>The cryobot is a heated cylinder about the height of a person. It melts the ice in front of it, lets the meltwater refreeze behind, and unspools a tether to talk to the lander. At around a metre an hour, the trip down takes more than two years.</p>
+    </div>
+  </section>
+
+  <section class="chapter tall" id="ice-deep">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>04</b> Halfway down</p>
+      <h2>−160&nbsp;°C at the top, near freezing at the base</h2>
+      <p>Heat leaks upward from the ocean, so the ice warms the deeper the probe goes. Pockets of trapped brine may sit inside the shell. The cryobot samples meltwater as it passes, looking for salts and organic molecules carried up from below.</p>
+    </div>
+  </section>
+
+  <section class="chapter tall" id="ocean">
+    <div class="panel reveal">
+      <p class="eyebrow bio"><b>05</b> Ocean</p>
+      <h2>Dark, salty, and maybe not empty</h2>
+      <p>No sunlight reaches this water. Anything living here would feed on chemistry from vents in the seafloor, the way life does around hydrothermal vents on Earth.</p>
+      <p class="aside">The glowing life in this scene is imagined. Finding out whether it exists is the point of the mission.</p>
+    </div>
+  </section>
+
+  <section class="chapter end" id="end">
+    <div class="panel reveal">
+      <p class="eyebrow"><b>—</b> End of transmission</p>
+      <h2>Signal received 43 minutes later</h2>
+      <p>Light takes roughly 33 to 53 minutes to cross from Jupiter to Earth, depending on where the planets are. Everything the cryobot finds arrives that late.</p>
+      <button type="button" class="btn" data-goto="top">Return to orbit</button>
+      <div class="credits">
+        <p>Halcyon is a design concept, not a real mission, and is not affiliated with NASA or ESA. Figures for Europa are published scientific estimates.</p>
+        <ul>
+          <li>Three.js with custom GLSL shaders</li>
+          <li>Instanced meshes and GPU particles</li>
+          <li>UnrealBloom post-processing</li>
+          <li>GSAP + ScrollTrigger</li>
+          <li>Lenis smooth scroll</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="hud" aria-hidden="true">
+  <div class="hud-phase" id="hud-phase">APPROACH</div>
+  <div class="hud-grid">
+    <span class="k" id="hud-k1">ALTITUDE</span><span class="v" id="hud-v1">—</span>
+    <span class="k">TEMP</span><span class="v" id="hud-v2">—</span>
+    <span class="k opt">LIGHT TIME</span><span class="v opt">≈ 43 min</span>
+  </div>
+  <div class="hud-bar"><i id="hud-bar"></i></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
