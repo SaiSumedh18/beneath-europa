@@ -1,5 +1,7 @@
 # Beneath Europa
 
+**Live:** https://saisumedh18.github.io/beneath-europa/
+
 A scroll-driven WebGL story for **Halcyon**, a concept mission to melt through the ice shell of Jupiter's moon Europa and reach the ocean underneath.
 
 Scroll from Jovian orbit to touchdown, then ride a cryobot down through 20 km of ice into a dark, bioluminescent ocean. Live telemetry (altitude, depth, temperature) updates as you go.
